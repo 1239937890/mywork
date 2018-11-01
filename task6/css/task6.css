@@ -111,8 +111,6 @@ ul{
     list-style: none;
 }
 li{
-    left: 0;
-    right: 0;
     padding: .3rem 0 ;
     border-bottom: .02rem solid #E1E5E7;
 }
