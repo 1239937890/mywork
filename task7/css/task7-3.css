@@ -51,7 +51,7 @@ main{
 }
 .picture::before{
     position: absolute;
-    bottom: 9.5px;
+    bottom: 7.5px;
     left: 41px;
     content: "卧底胜利";
     color: #FFFFFF;
@@ -78,7 +78,7 @@ main{
     width: 80%;
 }
 .occupation{
-    margin-right: .25rem;
+    margin-right: .58rem;
     font-size: .26rem;
     letter-spacing: .04rem;
     white-space: nowrap;
