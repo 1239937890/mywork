@@ -66,20 +66,19 @@ ul{
     background-color: #FFFFFF;
 }
 .right-border{
-    padding: .18rem .64rem .18rem .84rem;
+    padding: .18rem .74rem;
     border-bottom: .01rem solid #E6E6E6;
 }
 .main-img{
     float: left;
 }
-
 .img-right{
-    margin-left: .26rem;
+    display: inline;
     font-size: .14rem;
     color: #999999;
 }
 .main-words{
-    margin: .38rem .74rem .74rem;
+    margin: .38rem .74rem;
     font-size: .14rem;
     color: #999999;
 }
