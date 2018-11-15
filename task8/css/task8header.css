@@ -48,8 +48,6 @@ ul{
 .header-nav{
     background-color: #29B078;
 }
-.kk{
-}
 .nav-text{
     margin-top: .27rem;
     letter-spacing: .08rem;
@@ -76,13 +74,16 @@ ul{
 .nav-link{
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    border-top: .05rem solid #29B078;
+    border-bottom: .05rem solid #29B078;
     line-height: 1rem;
     font-size: .16rem;
     color: #FFFFFF !important;
+    box-sizing: border-box;
 }
-@media (min-width: 769px){
+@media (min-width: 768px){
     .rightt{
-        margin-right: -.8rem;
+        margin-right: -.75rem;
     }
     .nav-link:hover{
         border-bottom: .05rem solid white !important;
