@@ -234,7 +234,7 @@ label{
      margin-right: .32rem;
      visibility: hidden;
 }
-.pp{
+.pssafl{
     position: relative;
     display: flex;
     align-items: center;
@@ -317,7 +317,7 @@ label{
     font-size: .26rem;
     outline: none;
 }
-.dd{
+.dopskll{
     margin-right: .6rem;
     font-size: .32rem;
     color: #666666;
@@ -333,7 +333,7 @@ label{
     .number-box{
         flex-direction: column;
     }
-    .dd{
+    .dopskll{
         margin: 0 0 .4rem 0 !important;
     }
     .ton{
@@ -420,7 +420,7 @@ footer{
     line-height: .8rem;
     font-size: .2rem;
     color: #FFFFFF;
-    background: #1D7AD9;
+    background: #1D7AD9;   
 }
 .text{
     display: flex;
