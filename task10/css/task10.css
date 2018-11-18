@@ -20,8 +20,8 @@ li{
     margin: 0;
     list-style: none;
 }
+/* 头部 */
 header{
-    
     background-color: #F9F9F9;
 }
 .top-bg{
@@ -78,7 +78,7 @@ header{
     line-height: .8rem;
     font-size: .16rem;
     border: none;
-    border-radius: 6%;
+    border-radius: .2rem;
     outline: none !important;
     color: black;
     background-color: #FFFFFF;
@@ -88,6 +88,28 @@ header{
     color: #FFFFFF;
     background: #1D7AD9;
 }
+/* 折叠框的媒体查询 */
+@media (max-width:575px){
+    .header-btnn{
+        display: none;
+    }
+    .dropdown{
+        display: block;
+    }
+    .navv:hover .header-btnn{
+        display: block;
+    }
+    .bottom-btn{
+       margin-left: 0;
+        width: 100%;
+    }
+    .carton-box{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50% !important;
+    }
+}
+/* 中间部分 */
 .main-top{
     display: flex;
     justify-content: flex-end;
@@ -102,7 +124,6 @@ header{
     color: #CCCCCC;
 }
 @media (max-width:575px){
-
     .main-top{
         display: inline-block !important;
     }
@@ -123,6 +144,7 @@ header{
 .carton{
     margin: .5rem 0;
 }
+/* 点击折叠盒子 */
 .carton-box:hover{
     color: #FF7F02 !important;
     border-color: #FF7F02 !important;
@@ -167,7 +189,8 @@ label{
     border-bottom: none;
     background: #FBFCFF;
 }
-@media (max-width:767px){
+/* 单选框的媒体查询 */
+@media (max-width:767px){             
     .main-option{
         align-items: flex-start;
     }
@@ -227,10 +250,6 @@ label{
 .radio-left:checked+.bule-yuan{
     border: .12rem solid #1D7AD9;
 }
-/* .bule-qy{
-    position: absolute;
-    border: .12rem solid #1D7AD9;
-}  */
 .option-button{
     display: flex;
     position: relative;
@@ -344,6 +363,7 @@ label{
     color: #FFFFFF;
     background: #E15053;
 }
+/* 底部 */
 footer{
     margin-top: 1rem;
     padding-top: .6rem;
@@ -394,6 +414,7 @@ footer{
     height: 1.5rem;
     background: url(../img/bb.png) no-repeat 0% 100%/100%;
 }
+/* 最底部蓝色 */
 .footer-bottom{
     margin-top: .6rem;
     line-height: .8rem;
@@ -402,10 +423,19 @@ footer{
     background: #1D7AD9;
 }
 .text{
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 @media (max-width:767px){
     .text{
-        text-align: left;
+        justify-content: flex-start;
+    }
+    .word-end{
+     flex-direction: column;
 }
+}
+.word-end{
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
 }
