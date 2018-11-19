@@ -127,6 +127,9 @@ header{
     .main-top{
         display: inline-block !important;
     }
+    .left-col{
+        display: none;
+    }   
 }
 .carton-yq{
     position: absolute;
@@ -190,7 +193,8 @@ label{
     background: #FBFCFF;
 }
 /* 单选框的媒体查询 */
-@media (max-width:767px){             
+@media (max-width:767px){
+              
     .main-option{
         align-items: flex-start;
     }
@@ -428,14 +432,10 @@ footer{
 }
 @media (max-width:767px){
     .text{
-        justify-content: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    .word-end{
-     flex-direction: column;
-}
 }
 .word-end{
-    display: flex;
-    justify-content: space-between;
-    width: 85%;
+    padding: 0 .1rem;
 }
