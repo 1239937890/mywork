@@ -1,0 +1,182 @@
+html{
+    font-size: 312.5%;
+}
+/* 变量 */
+$margin: 0;
+$padding: 0;
+$border: none;
+$font-size: .32rem;
+$color:#333333;
+$background:#5FC0CD,#FFFFFF;
+/* 混合器 */
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+body{
+    margin: $margin;
+    font-size: initial;
+    background: nth($background,2);
+}
+p{
+    margin: $margin;
+}
+/* 头部 */
+header{
+    @include flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.28rem;
+    background: nth($background,1);
+    z-index: 1;
+    /* 内嵌旋转三角 */
+    a{
+        position: absolute;
+        left: .35rem;
+        height: .3rem;
+        width: .3rem;
+        border-top: .05rem solid #FFFFFF;
+        border-left: .05rem solid #FFFFFF;
+        transform: rotate(-45deg);
+    }
+    h3{
+        margin: $margin;
+        font-size: $font-size;
+        color: #FFFFFF;
+    }
+}
+/* 中间主要部分 */
+main{
+    position: relative;
+    margin-top: 1.28rem;
+    .main-bg{
+        @include flex;
+        height: 3.26rem;
+        background: url(../img/bj.png) no-repeat;
+        background-size: 100% 101%;
+        span{
+            margin-left: .3rem;
+            height: 1.7rem;
+            width: 1.7rem;
+            background: url(../img/tx.png) no-repeat;
+        }
+        div{
+           display: flex;
+           flex-direction: column;
+           margin-left: .43rem;
+           p{
+               font-size: .32rem;
+               color: #FFFFFF;
+           }
+           .address{
+               margin-top: .24rem;
+               font-size: .24rem;
+               color: #FFFFFF;
+           }
+           .address::before{
+            display: inline-block;
+            margin-right: .14rem;
+            content: "";
+            width: .18rem;
+            height: .23rem;
+            background: url(../img/dh.png) no-repeat;
+        }
+        }
+    }
+    ul{
+        margin: $margin;
+        padding: $padding;
+        list-style: none;
+        li{
+            @include flex;
+            height: .99rem;
+            border-bottom: .02rem solid RGBA(225, 229, 231, 1);
+            .skill{
+                margin-left: .3rem;
+                padding-left: .3rem;
+                font-size: $font-size;
+                border-left: .04rem solid #5FC0CD;
+            }
+        }
+        .first-line{
+            margin-left: .33rem;
+            .star{
+                margin: 0 .08rem 0 .28rem;
+                width: .24rem;
+                height: .24rem;
+                background: url(../img/xx.png) no-repeat;
+            }
+            .home{
+                padding-right: .19rem;
+                border-right: .01rem solid #E1E5E7;
+            } 
+            .time{
+                margin: 0 .27rem 0 .28rem;
+                padding-right: .19rem;
+                color: #999999;
+                border-right: .01rem solid #E1E5E7;
+            }
+            p{
+                font-size: .32rem;
+                color: #333333;
+            }   
+            .red-word{
+                font-size: $font-size;
+                color: #E26163;
+            }
+        }  
+        .me{
+            height: auto;
+            .time{
+                margin: 0 .27rem 0 .6rem;
+                padding-right: .19rem;
+                white-space: nowrap;
+                color: #999999;
+                border-right: .01rem solid #E1E5E7;
+            }
+            .experience{
+                padding: .3rem .91rem .3rem 0;
+                font-size: .28rem;
+                color: #333333;
+            }
+        }
+    }
+}
+/* 底部 */
+footer{
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        justify-content: space-evenly;
+        padding-bottom: .4rem;
+        z-index: 1;
+        .left{
+            line-height: .88rem;
+            width: 45%;
+            text-align: center;
+            border-radius: .2rem;
+            border: .01rem solid #5FC0CD;
+            outline: none;
+            font-size: .34rem;
+            color: #5FC0CD;
+            background: nth($background,2);
+        }
+        .right{
+            line-height: .88rem;
+            width: 45%;
+            text-align: center;
+            border-radius: .2rem;
+            border: none;
+            outline: none;
+            font-size: .34rem;
+            color: #FFFFFF;
+            background: nth($background,1);
+        }
+}
+
+   

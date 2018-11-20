@@ -1,0 +1,227 @@
+html{
+    font-size: 312.5%;
+}
+/* 变量 */
+$margin: 0;
+$padding: 0;
+$top: 0;
+$right: 0;
+$bottom: 0;
+$left: 0;
+$font-size: .28rem;
+$color: #999999;
+$background: #FFFFFF;
+$border: none;
+$outline: none;
+$list-style:none;
+/* 混合 */
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+body{
+    margin: $margin;
+    font-size: initial;
+    background: $background;
+    p{
+        margin: $margin;
+    }
+    ul,li{
+        margin: $margin;
+        padding: $padding;
+        list-style: $list-style;
+    }
+    /* 头部 */
+    header{
+        @include flex;
+        justify-content: center;
+        position: fixed;
+        top: $top;
+        left: $left;
+        right: $right;
+        height: 1.28rem;
+        background: #5FC0CD;
+        z-index: 1;
+        .btn-left{
+            margin-right: -.1rem;
+            line-height: .7rem;
+            width: 1.44rem;
+            text-align: center;
+            border-radius: .2rem;
+            border: $border;
+            outline: $outline;
+            color: #FFFFFF;
+            background: #55A8B3;
+        }
+        .btn-right{
+            line-height: .7rem;
+            width: 1.44rem;
+            text-align: center;
+            border-radius: .2rem;
+            border: $border;
+            outline: $outline;
+            color: #5FC0CD;
+            background: $background;
+        }
+        a{
+            position: absolute;
+            right: .3rem;
+            width: .44rem;
+            height: .44rem;
+            background: url(../img/css_sprite.png) no-repeat -.2rem -3.72rem; 
+        }
+    }
+    /* 主要内容 */
+    main{
+        /* 主要内容顶部 */
+        margin-bottom: 1.2rem;
+        .main-top{
+            display: flex;
+            position: fixed;
+            width: 100%;
+            top: 1.28rem;
+            background: $background;
+            z-index: 1;
+            .in{
+                border-left: .01rem solid #E1E5E7;
+                border-right: .01rem solid #E1E5E7;
+            }
+            div{
+                position: relative;
+                @include flex;
+                justify-content: center;
+                flex-grow: 1;
+                line-height: .8rem;
+                font-size: .28rem;
+                color: #999999;
+                border-bottom: .01rem solid #E1E5E7;
+                z-index: 1;
+                .triangle{
+                    position: absolute;
+                    right: .2rem;
+                    border-top: .14rem solid #AFBAC0;
+                    border-left: .07rem solid transparent;
+                    border-right: .07rem solid transparent;
+                }
+                /* 下拉框 */
+                ul{
+                    display: none;
+                    position: absolute;
+                    top: .81rem;
+                    width: 100%;
+                    text-align: center;
+                    background: $background;
+                }
+            }
+            div:hover ul{
+                display: block;
+            }
+            li:hover{
+                background: #5FC0CD;
+            }
+        }
+        /* 主要内容中部 */
+        .main-in{
+            margin-top: 2.08rem;
+            .line{
+                position: relative;
+                padding: .3rem .72rem;
+                font-size: .26rem;
+                color: #999999;
+                border-bottom: .01rem solid #E1E5E7;
+                .line-top{
+                    position: relative;
+                    @include flex;
+                }
+                .line-top::before{
+                    position: absolute;
+                    content: "";
+                    width: .24rem;
+                    height: .24rem;
+                    left: -.44rem;
+                    background: url(../img/css_sprite.png) no-repeat -.2rem -.2rem;
+                }
+                .line-in{
+                    @include flex;
+                    position: relative;
+                    margin: .25rem 0;
+                    @include flex;
+                    justify-content: space-between;
+                    p{
+                        font-size: .28rem;
+                        font-weight: 600;
+                        color: #333333;
+                    }
+                    span{
+                        font-size: .3rem;
+                        font-weight: 600;
+                        color: #E63B0E;
+                    }
+                    
+                }
+                .line-in::after{
+                    position: absolute;
+                    content: "";
+                    right: -.4rem;
+                    width: .24rem;
+                    height: .24rem;
+                    border-top: .03rem solid #5FC0CD;
+                    border-right: .03rem solid #5FC0CD;
+                    transform: rotate(45deg);
+                }
+                .line-top.bottom::before{
+                    height: .3rem;
+                    background: url(../img/css_sprite.png) no-repeat -.2rem -.75rem;
+                }
+            }
+        }
+    }
+    /* 底部 */
+    footer{
+        @include flex;
+        justify-content: space-evenly;
+        position: fixed;
+        bottom: $bottom;
+        left: $left;
+        right: $right;
+        background: #F8FAFB;
+        div{
+            @include flex;
+            flex-direction: column;
+            font-size: .2rem;
+            span{
+                margin-bottom: .18rem;
+                width: .48rem;
+                height: .4rem;
+                background: url(../img/css_sprite.png) no-repeat -.2rem -1.4rem;
+            }
+            a{
+                text-decoration: none;
+                color: #5FC0CD;
+            }
+            .people{
+                width: .48rem;
+                height: .42rem;
+                background: url(../img/css_sprite.png) no-repeat -.17rem -2.9rem;
+            }
+            .my{
+                color: #999999;
+            }
+        }
+        /* 底部蓝色大圆圈 */
+        .circular{
+            justify-content: center;
+            width: 1.2rem;
+            height: 1.2rem;
+            border-radius: 50%;
+            background: #5FC0CD;
+            span{
+                margin: $margin;
+                width: .4rem;
+                height: .4rem;
+                background: url(../img/css_sprite.png) no-repeat -.17rem -2.18rem;
+            }
+        }
+        
+    }
+}
