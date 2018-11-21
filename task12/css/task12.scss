@@ -2,48 +2,60 @@ html{
     font-size: 312.5%;
 }
 /* 变量 */
-$margin: 0;
 $padding: 0;
+$direction: 0;
 $border: none;
 $font-size: .32rem;
 $color:#333333;
 $background:#5FC0CD,#FFFFFF;
 /* 混合器 */
-@mixin flex {
-    display: flex;
-    align-items: center;
+@mixin w-h ($w:0,$h:0){
+    width: $w;
+    height: $h;
+}
+@mixin f-j-a ($f:flex,$j:center,$a:center){
+    display: $f;
+    justify-content: $j;
+    align-items: $a;
+}
+@mixin bottom-button {
+    line-height: .88rem;
+    width: 45%;
+    text-align: center;
+    border-radius: .2rem;
+    outline: none;
+    font-size: .34rem;
 }
 body{
-    margin: $margin;
+    margin: $direction;
     font-size: initial;
     background: nth($background,2);
 }
 p{
-    margin: $margin;
+    margin: $direction;
 }
 /* 头部 */
 header{
-    @include flex;
-    justify-content: center;
+    @include f-j-a;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: $direction;
+    left: $direction;
+    right: $direction;
     height: 1.28rem;
     background: nth($background,1);
     z-index: 1;
-    /* 内嵌旋转三角 */
+    /* 头部旋转三角 */
     a{
         position: absolute;
         left: .35rem;
-        height: .3rem;
-        width: .3rem;
+        @include w-h(.3rem,.3rem);
         border-top: .05rem solid #FFFFFF;
         border-left: .05rem solid #FFFFFF;
         transform: rotate(-45deg);
     }
+    /* 头部标题 */
     h3{
-        margin: $margin;
+        margin: $direction;
         font-size: $font-size;
         color: #FFFFFF;
     }
@@ -53,14 +65,15 @@ main{
     position: relative;
     margin: 1.28rem 0 1.2rem 0;
     .main-bg{
-        @include flex;
+        /* flex 垂直居中 */
+        @include f-j-a(flex,flex-start);
         height: 3.26rem;
         background: url(../img/bj.png) no-repeat;
         background-size: 100% 101%;
+        /* 头像 */
         span{
             margin-left: .3rem;
-            height: 1.7rem;
-            width: 1.7rem;
+            @include w-h(1.7rem,1.7rem);
             background: url(../img/tx.png) no-repeat;
         }
         div{
@@ -75,23 +88,25 @@ main{
                margin-top: .24rem;
                font-size: .24rem;
                color: #FFFFFF;
-           }
-           .address::before{
+           
+           /* 定位伪元素 */
+            &::before{
             display: inline-block;
             margin-right: .14rem;
             content: "";
-            width: .18rem;
-            height: .23rem;
+            @include w-h(.18rem,.23rem);
             background: url(../img/dh.png) no-repeat;
-        }
+           }
         }
     }
+    }
+    /* 中间列表部分 */
     ul{
-        margin: $margin;
+        margin: $direction;
         padding: $padding;
         list-style: none;
         li{
-            @include flex;
+            @include f-j-a(flex,flex-start);
             height: .99rem;
             border-bottom: .02rem solid RGBA(225, 229, 231, 1);
             .skill{
@@ -103,10 +118,10 @@ main{
         }
         .first-line{
             margin-left: .33rem;
+            /* 星星图标 */
             .star{
                 margin: 0 .08rem 0 .28rem;
-                width: .24rem;
-                height: .24rem;
+                @include w-h(.24rem,.24rem);
                 background: url(../img/xx.png) no-repeat;
             }
             .home{
@@ -147,34 +162,23 @@ main{
 }
 /* 底部 */
 footer{
-        display: flex;
+        @include f-j-a(flex,space-evenly);
         position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        justify-content: space-evenly;
+        left: $direction;
+        right:$direction;
+        bottom: $direction;
         padding-bottom: .4rem;
         background: #FFFFFF;
         z-index: 1;
         .left{
-            line-height: .88rem;
-            width: 45%;
-            text-align: center;
-            border-radius: .2rem;
+            @include bottom-button;
             border: .01rem solid #5FC0CD;
-            outline: none;
-            font-size: .34rem;
             color: #5FC0CD;
             background: nth($background,2);
         }
         .right{
-            line-height: .88rem;
-            width: 45%;
-            text-align: center;
-            border-radius: .2rem;
+            @include bottom-button;
             border: none;
-            outline: none;
-            font-size: .34rem;
             color: #FFFFFF;
             background: nth($background,1);
         }

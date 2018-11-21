@@ -20,12 +20,12 @@ header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -33,14 +33,15 @@ header {
   height: 1.28rem;
   background: #5FC0CD;
   z-index: 1;
-  /* 内嵌旋转三角 */
+  /* 头部旋转三角 */
+  /* 头部标题 */
 }
 
 header a {
   position: absolute;
   left: .35rem;
-  height: .3rem;
-  width: .3rem;
+  width: 0.3rem;
+  height: 0.3rem;
   border-top: .05rem solid #FFFFFF;
   border-left: .05rem solid #FFFFFF;
   -webkit-transform: rotate(-45deg);
@@ -57,24 +58,30 @@ header h3 {
 main {
   position: relative;
   margin: 1.28rem 0 1.2rem 0;
+  /* 中间列表部分 */
 }
 
 main .main-bg {
+  /* flex 垂直居中 */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 3.26rem;
   background: url(../img/bj.png) no-repeat;
   background-size: 100% 101%;
+  /* 头像 */
 }
 
 main .main-bg span {
   margin-left: .3rem;
-  height: 1.7rem;
   width: 1.7rem;
+  height: 1.7rem;
   background: url(../img/tx.png) no-repeat;
 }
 
@@ -98,14 +105,15 @@ main .main-bg div .address {
   margin-top: .24rem;
   font-size: .24rem;
   color: #FFFFFF;
+  /* 定位伪元素 */
 }
 
 main .main-bg div .address::before {
   display: inline-block;
   margin-right: .14rem;
   content: "";
-  width: .18rem;
-  height: .23rem;
+  width: 0.18rem;
+  height: 0.23rem;
   background: url(../img/dh.png) no-repeat;
 }
 
@@ -119,6 +127,9 @@ main ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -135,12 +146,13 @@ main ul li .skill {
 
 main ul .first-line {
   margin-left: .33rem;
+  /* 星星图标 */
 }
 
 main ul .first-line .star {
   margin: 0 .08rem 0 .28rem;
-  width: .24rem;
-  height: .24rem;
+  width: 0.24rem;
+  height: 0.24rem;
   background: url(../img/xx.png) no-repeat;
 }
 
@@ -189,13 +201,16 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   padding-bottom: .4rem;
   background: #FFFFFF;
   z-index: 1;
@@ -206,9 +221,9 @@ footer .left {
   width: 45%;
   text-align: center;
   border-radius: .2rem;
-  border: .01rem solid #5FC0CD;
   outline: none;
   font-size: .34rem;
+  border: .01rem solid #5FC0CD;
   color: #5FC0CD;
   background: #FFFFFF;
 }
@@ -218,9 +233,9 @@ footer .right {
   width: 45%;
   text-align: center;
   border-radius: .2rem;
-  border: none;
   outline: none;
   font-size: .34rem;
+  border: none;
   color: #FFFFFF;
   background: #5FC0CD;
 }
