@@ -6,30 +6,33 @@ a{
     color: #FFFFFF;
 }
 //变量
-$margin: 0;
+$direction: 0;
 $font-size: .36rem;
 $color: #FFFFFF,#E1E5E7,#5FC0CD;
 $background: #5FC0CD,#FFFFFF,#EFF0F4;
-
 //混合器
-@mixin flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@mixin f-j-a($f:flex,$j:space-between,$a:center) {
+    display: $f;
+    justify-content: $j;
+    align-items: $a;
+}
+@mixin w-h($w:.28rem,$h:.42rem) {
+    width: $w;
+    height: $h;
 }
 /* 内嵌 */
 body{
-    margin: $margin;
+    margin: $direction;
     font-size: initial;
     background: nth($background,3);
     /* 头部 */
     header{
-        @include flex;
+        @include f-j-a;
         position: fixed;
         height: 1.28rem;
-        top: 0;
-        left: 0;
-        right: 0;
+        top: $direction;
+        left: $direction;
+        right: $direction;
         font-size: $font-size;
         background: nth($background,1);
         z-index: 1;
@@ -45,8 +48,7 @@ body{
         margin-top: 1.28rem;
         padding-top: .16rem;
         .input-box{
-            display: flex;
-            align-items: center;
+            @include f-j-a(flex,flex-start);
             margin-bottom: .16rem;
             height: 1rem;
             background: nth($background,2);
@@ -59,15 +61,12 @@ body{
         }
         .phone{
             margin: 0 .46rem 0 .42rem;
-            width: .28rem;
-            height: .42rem;
+            @include w-h;
             background: url(../img/suoo.png) no-repeat 0 0;
         }
-        
         .lock{
             margin: 0 .46rem 0 .42rem;
-            width: .29rem;
-            height: .43rem;
+            @include w-h(.29rem,.43rem);
             background: url(../img/suoo.png) no-repeat -34px 0;
         }
     }
