@@ -44,14 +44,14 @@ header {
 }
 
 header .house {
-  width: .5rem;
-  height: .42rem;
+  width: 0.5rem;
+  height: 0.42rem;
   background: url(../img/css_spritees.png) no-repeat -0.2rem -1rem;
 }
 
 header .tips {
-  width: .4rem;
-  height: .4rem;
+  width: 0.4rem;
+  height: 0.4rem;
   background: url(../img/css_spritees.png) no-repeat -0.2rem -0.2rem;
 }
 
@@ -71,8 +71,8 @@ main .main-top .picture {
   display: block;
   position: relative;
   margin: auto;
-  height: 2.05rem;
   width: 3.51rem;
+  height: 2.05rem;
   background: url(../img/css_spritees.png) no-repeat -10px -90px;
 }
 

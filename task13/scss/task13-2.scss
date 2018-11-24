@@ -1,19 +1,16 @@
 /* 变量 */
 $font-size: .34rem;
-$text-align: center;
 $eliminate: 0;
 $border: none;
-$outline: none;
-$list-style: none;
 $color: #FFFFFF;
 $background: #29BDE0;
 /* 混合 */
-@mixin f-j-a($f:flex,$j:center,$a:center) {
-    display: $f;
-    justify-content: $j;
-    align-items: $a;
+@mixin flex ($x:center,$y:center) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
 }
-@mixin w-h($w:0,$h:0) {
+@mixin w-h($w,$h) {
     width: $w;
     height: $h;
 }
@@ -25,8 +22,8 @@ $background: #29BDE0;
     z-index: 1;
 }
 @mixin button {
-    border: none;
-    outline: none;
+    border: $border;
+    outline: $border;
 }
 html{
     font-size: 312.5%;
@@ -39,12 +36,12 @@ body{
 ul,li,button,p,h3{
     margin: $eliminate;
     padding: $eliminate;
-    list-style: $list-style;
+    list-style: $border;
 }
 /* 头部 */
 header{
     @include fixed;
-    @include f-j-a(flex,space-between);
+    @include flex(space-between);
     padding: 0 .5rem;
     top: $eliminate;
     height: 1.28rem;
@@ -53,10 +50,10 @@ header{
     /* 头部左侧按钮 */
     button{
         @include w-h(.5rem,.5rem);
-        @include f-j-a;
+        @include flex;
         border: .03rem solid $color;
         background: $background;
-        outline: $outline;
+        outline: $border;
         span{
             padding: .1rem 0;
             @include w-h(.3rem,.03rem);
@@ -83,7 +80,7 @@ header{
 main{
     margin: 1.28rem 0 2rem 0;
     .main-top{
-        @include f-j-a(flex,space-between);
+        @include flex(space-between);
         position: relative;
         padding: 0 .17rem 0 .46rem;
         height: .82rem;
@@ -106,7 +103,7 @@ main{
             border-radius: 50%;
             background: #FBB435;
             border: $border;
-            outline: $outline;
+            outline: $border;
             span{
                 display: inline-block;
                 margin: .06rem 0 0 .06rem;
@@ -123,20 +120,20 @@ main{
         color: $color;
     }
     ul{ /* 游戏盒子 */
-        @include f-j-a(flex,space-around,flex-start );
+        @include flex(space-around,flex-start);
         margin-bottom: 11.5vw;
         li{
             @include w-h(21vw,21vw);
             border: .7vw solid $color;
             .li-top{
-                @include f-j-a;
+                @include flex;
                 height: 75%;
                 font-size: 4.6vw;
                 color: #565656;
                 background: #F5C97B;
             }
             .li-bottom{
-                @include f-j-a;
+                @include flex;
                 height: 25%;
                 font-size: 3.6vw;
                 color: $color;
@@ -144,7 +141,7 @@ main{
             }
             .dropdown{
                 /* 下拉 */
-                @include f-j-a(flex,space-between);
+                @include flex(space-between);
                 display: none;
                 margin: 4vw 0 0 -.75vw;
                 width: 22.5vw;
