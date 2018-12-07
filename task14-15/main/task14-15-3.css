@@ -1101,6 +1101,19 @@ nav ul .item .nav-link {
     display: block !important;
   }
 }
+@media screen and (max-width: 450px) {
+  .page .direction {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    text-align: center;
+  }
+  .page .direction .direction-left {
+    margin-left: 0;
+    line-height: .6rem;
+  }
+}
 
 .page {
   padding-bottom: 2.6rem;
