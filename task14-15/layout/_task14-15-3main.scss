@@ -29,6 +29,16 @@
             }
         }
     }
+    @media screen and (max-width:450px) {
+        .direction{
+            flex-direction: column;
+            text-align: center;
+            .direction-left {
+                margin-left: 0;
+                line-height: .6rem;
+            }
+        }
+    }
     //方向下面
     .direction-bottom {
         display: block;
