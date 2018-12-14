@@ -1,0 +1,35 @@
+html {
+  font-size: 312.5%;
+}
+
+body {
+  margin: 0;
+  font-size: initial;
+}
+
+.box {
+  float: left;
+  margin: 1.16%;
+  padding-bottom: 31%;
+  width: 31%;
+  border-radius: 10%;
+  background: red;
+}
+
+button {
+  margin-bottom: 3%;
+  padding: 5% 0;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid orangered;
+  background: white;
+  outline: none;
+  color: orangered;
+  font-size: 16px;
+}
+
+button:hover {
+  color: white;
+  background: orangered;
+}
+/*# sourceMappingURL=js-demo.css.map */
