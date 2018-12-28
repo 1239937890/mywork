@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>法官台本</title>
+    <link rel="stylesheet" type="text/css" href="../scss/version.css">
+    <script src="../js/state-machine.js"></script>
+</head>
+
+<body>
+    <header>
+        <a class="return" href="./journal.html"></a>
+        <h4>法官台本</h4>
+        <a class="right" href="#">
+            <span></span>
+        </a>
+    </header>
+    <main>
+        <div class="itme">
+            <div class="day">
+                第<span class="dayss">一</span>天
+                <span class="dropdown"></span>
+            </div>
+            <div class="order">
+                <span class="triangle"></span>
+                <div class="box">
+                    <div class="one">
+                        <img src="../img/taiyang.png">
+                    </div>
+                    <div class="two">
+                        <img src="../img/yueliang.png">
+                    </div>
+                    <button class="killingg">杀手杀人</button>
+                    <p class="sha" id="shaa"></p>
+                    <button class="undeadspeakk">亡灵发表遗言</button>
+                    <button class="playerspeakingg">玩家依次发言</button>
+                    <button class="votingg">全民投票</button>
+                    <p class="tou"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button id="end">结束游戏</button>
+        <button id="record">法官日志</button>
+    </footer>
+    <script>
+        var dayss = document.getElementsByClassName("dayss");
+        var itme = document.getElementsByClassName("itme"); //获取克隆的源节点
+        var order = document.getElementsByClassName("order");
+        var sha = document.getElementsByClassName("sha");
+        var tou = document.getElementsByClassName("tou");
+        var daybtn = document.getElementsByClassName("day");
+        var box = document.getElementsByClassName("box");
+        //四个按钮的节点获取
+        var killingg = document.getElementsByClassName("killingg");
+        var undeadspeakk = document.getElementsByClassName("undeadspeakk");
+        var playerspeakingg = document.getElementsByClassName("playerspeakingg");
+        var votingg = document.getElementsByClassName("votingg");
+        //console.log(p);
+        var step = sessionStorage.getItem("step"); //提取步骤
+        // console.log(step)
+        //提取被杀死的平民信息
+        console.log(days)
+        if (sessionStorage.getItem("killDead")) {
+            var killDead = JSON.parse(sessionStorage.getItem("killDead"));
+        } else {
+            var killDead = [];
+        }
+        // console.log(killDead);
+        //提取被投死的玩家信息
+        if (sessionStorage.getItem("voteDead")) {
+            var voteDead = JSON.parse(sessionStorage.getItem("voteDead"));
+        } else {
+            var voteDead = [];
+        }
+        console.log(voteDead)
+        // console.log(voteDead);
+        //提取天数
+        if (sessionStorage.getItem("days")) {
+            var days = sessionStorage.getItem("days");
+        } else {
+            var days = 1;
+        }
+        console.log(days);
+        //创建天数数组
+        var daysArray = ["十", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+        sessionStorage.setItem("daysArray", JSON.stringify(daysArray));
+        //创建状态机数组
+        // var state = ["kill", "undead", "playerspeak", "vote"];
+        //创建执行顺序状态机
+        var fsm = new StateMachine({
+            //当前状态
+            init: "kill",
+            //状态转换
+            transitions: [{
+                    name: "killing",
+                    from: "kill",
+                    to: "undead"
+                },
+                {
+                    name: "undeadspeak",
+                    from: "undead",
+                    to: "playerspeak"
+                },
+                {
+                    name: "playerspeaking",
+                    from: "playerspeak",
+                    to: "vote"
+                },
+                {
+                    name: "voting",
+                    from: "vote",
+                    to: "kill"
+                }
+            ],
+            //构造状态机的方法
+            methods: {
+                /* 如果状态转换不能正常转换就会触发下面的错误处理机制 */
+                onInvalidTransition: function (transitions, from, to) {
+                    switch (from) {
+                        case "kill":
+                            alert("请点击杀手杀人");
+                            break;
+                        case "undead":
+                            alert("请点击亡灵发表遗言");
+                            break;
+                        case "playerspeak":
+                            alert("请点击玩家依次发言");
+                            break;
+                        case "vote":
+                            alert("请点击请点击全民投票");
+                            break;
+                    }
+                }
+            }
+        });
+
+        window.onload = function () {
+            if (days > 1) {
+                for (let i = 0; i < days - 1; i++) {
+                    var cloneNode = itme[0].cloneNode(true);
+                    itme[0].parentNode.appendChild(cloneNode);
+                    // console.log(itme)
+                    // console.log(itme[i])
+                    // console.log(box[i])
+                    var button = box[i].getElementsByTagName("button"); //获取button
+                    // console.log(button);
+                    for (let i = 0; i < button.length; i++) {
+                        button[i].style.background = "red";
+                    }
+                    // console.log(itme)
+                    
+                    
+                    var buttonn = box[i + 1].getElementsByTagName("button"); //获取当前天的button
+                    console.log(buttonn)
+                    for (let i = 0; i < button.length; i++) {
+                        buttonn[i].style.background = "#24A7C6";
+                    }
+                    //console.log(button)
+                    //console.log(buttonn)
+                    dayss[i].innerHTML = daysArray[i + 1]; //修改天数数字
+                    sha[i].innerHTML = killDead[i];
+                    tou[i].innerHTML = voteDead[i];
+                    // console.log(i);
+                    // console.log(voteDead)
+                    //  console.log(tou[i])
+                    //  console.log(tou[1])
+
+                }
+
+                for (let i = 0; i < days - 1; i++) { //当到下一天的时候，上一天自动隐藏
+                    //console.log(order[i])
+                    order[i].classList.add("none");
+                }
+                dayss[days - 1].innerHTML = daysArray[days]; //修改当前天数数字
+                if (killDead[days - 1] == undefined) { //修改当前杀人信息
+                    sha[days - 1].innerHTML = "";
+
+                } else {
+                    sha[days - 1].innerHTML = killDead[days - 1];
+                }
+                if (voteDead[days - 1] == undefined) { //修改当前投死信息
+                    tou[days - 1].innerHTML = "";
+
+                } else {
+                    tou[days - 1].innerHTML = voteDead[days - 1];
+                }
+
+            }
+            if (days == 1) {
+                //console.log( killDead[0])
+                if (killDead[0] == undefined) {
+                    sha[0].innerText = "";
+                } else {
+                    sha[0].innerText = killDead[0];
+                }
+            }
+            for (let i = 0; i<days; i++){
+                //console.log(daybtn[i])
+                daybtn[i].onclick = function () {
+                    order[i].classList.toggle("none");
+                }
+            }
+            killingg[days-1].onclick = function () {
+                    //console.log(fsm.can('killing'));
+                    fsm.killing();
+                    if (step == null) {
+                        location.href = ('killing.html');
+                    }
+                }
+            // for (let i = 0; i < days; i++) {
+                undeadspeakk[days-1].onclick = function () {
+                    //console.log(fsm.can('undeadspeak'));
+                    fsm.undeadspeak();
+                    if (step == 1) {
+                        alert("亡灵发表遗言");
+                        undeadspeakk[i].style.background = "red";
+                        step = 2;
+                        sessionStorage.setItem("step", step);
+                    }
+                }
+                playerspeakingg[days-1].onclick = function () {
+                    //console.log(fsm.can('playerspeaking'));
+                    fsm.playerspeaking();
+                    if (step == 2) {
+                        alert("玩家发表言");
+                        playerspeakingg[i].style.background = "red";
+                        step = 3;
+                        sessionStorage.setItem("step", step);
+                    }
+                }
+                // console.log(step);
+                votingg[days-1].onclick = function () {
+                    //console.log(fsm.can('voting'));
+                    fsm.voting();
+                    if (step == 3) {
+                        sessionStorage.setItem("days", days);
+                        sessionStorage.setItem("step", step);
+                        location.href = ('vote.html');
+                    }
+                }
+
+            // }
+
+            switch (step) {
+                case "1":
+                    fsm.killing();
+                    for (let i = 0; i < days; i++) {
+                        killingg[i].style.background = "red";
+                    }
+                    break;
+                case "2":
+                    fsm.killing();
+                    fsm.undeadspeak();
+                    for (let i = 0; i < days; i++) {
+                        killingg[i].style.background = "red";
+                        undeadspeakk[i].style.background = "red";
+                    }
+                    break;
+                case "3":
+                    fsm.killing();
+                    fsm.undeadspeak();
+                    fsm.playerspeaking();
+                    for (let i = 0; i < days; i++) {
+                        killingg[i].style.background = "red";
+                        undeadspeakk[i].style.background = "red";
+                        playerspeakingg[i].style.background = "red";
+                    }
+
+                    break;
+                case "4":
+                    step = null;
+                    break;
+            }
+            for (var i = 0; i < days - 1; i++) {
+            // console.log(box[i])
+            box[i].onclick = function (ev) {
+                var ev = ev || window.event;
+                var target = ev.target || ev.srcElement;
+                if (target.nodeName.toLowerCase() == 'button') {
+                    alert("请返回当天流程操作");
+                }
+            }
+        }
+        }
+        //第一天的步骤
+        //退出游戏按钮
+        var close = document.getElementsByClassName("right")[0];
+        close.onclick = function () {
+            if (confirm("确定退出游戏么？")) {
+                sessionStorage.clear();
+                location.href = ("homepage.html");
+            }
+        }
+        //法官日记按钮
+        var record = document.getElementById("record");
+        record.onclick = function () {
+            location.href = ("record.html");
+        }
+        //结束游戏按钮
+        var end = document.getElementById("end");
+        end.onclick = function () {
+            if (confirm("确定退出游戏么？")) {
+                sessionStorage.clear();
+                location.href = ("homepage.html");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
