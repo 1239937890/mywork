@@ -1,99 +1,103 @@
-// 点击顶部返回按钮返回到游戏主页
-function start() {
-    // 点击返回弹出提示窗口
-    if (confirm("是否要退出游戏，并返回到主页面")) {
-        location.href = "start.html"; //点击确定返回到主页面
-    } else {
-        return false; //点击取消停留在当前页面
-    }
-}
-
-//获取输入玩家input节点
-var quantity = document.getElementById("content");
-// 获取杀手input节点
-var Killer = document.getElementById("Killer");
-// 获取平民input节点
-var civilian = document.getElementById("civilian");
-
-
-// 利用oninput输入事件触发玩家input属性
-quantity.oninput = function () {
-    var x = /\D/g; //定义正则，非数字规则
-    this.value = this.value.replace(x, ""); // 符合正则规则替换为空值
-    gain(this.value); // 获取当前对象输入的值
-}
-var arr; //声明一个全局变量arr，让button的函数访问到arr变量
-
-// 把获取的值赋给Killer和civilian两个input
-function gain(value) {
-    Killer.value = Math.round(value - (value / 2 + value / 6 + value / 24.1));
-    civilian.value = Math.round(value / 2 + value / 6 + value / 24.1);
+//声明玩家总数
+var players;
+//声明杀手变量和平民变量
+var killer;
+var civilian;
+//获取input的value值
+function getInput(){
+    players= document.getElementById("players").value;
+    if (players >= 4 && players <= 18) {
     
-    // 时时保存分配的杀手总人数
-    localStorage.setItem("Killernum", JSON.stringify(Killer.value));
-    // 时时保存分配的平民总人数
-    localStorage.setItem("civiliannum", JSON.stringify(civilian.value));
-
-    // 当玩家值小于4或大于18赋给Killer和civilian值为空
-    if (value < 4 || value > 18) {
-        Killer.value = "";
-        civilian.value = "";
-    } else {
-        arr = []; //arr定义为空数组，每次执行完函数重置arr为空
-
-        // 当玩家值小于4或大于18把Killer和civilian以组数形式输出
-        for (let i = 0; i < Killer.value; i++) {
-            arr.push("杀手"); //输出杀手的数量push到数组
-        }
-        for (let i = 0; i < civilian.value; i++) {
-            arr.push("平民"); //输出平民的数量push到数组
-        }
-    }
 }
-gain(quantity.value); //自运行
-
-
-
-// 点击button按钮判断条件
-function button() {
-    var array;
-    // 获取输入玩家input的value的值
-    var count = document.getElementById("content").value;
-    // 获取输入玩家input的焦点，当人数不符时点击提示按钮获取焦点
-    var focus = document.getElementById("content").focus();
-    // 判断条件符合弹出提示窗口,否则进入下一个页面
-    if (count < 4 || count > 18) {
-        confirm("请输入正确的玩家数量。");
-        quantity.value = ""; //点击提示按钮输入玩家input值为空
-    } else {
-        array = arr; //访问全局变量arr
-        // 洗牌算法
-        if (array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                // 打乱数组的玩家
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-            // 把打乱的玩家角色储存到浏览器本地
-            localStorage.setItem("key", JSON.stringify(array));
-            console.log(array);
-        }
-        location.href = "check.html"; //进入下一个页面
-    }
-    return false; //冒泡事件
 }
+//用oninpu事件设定input的属性
+document.getElementById("players").oninput = function(){
+    var x = /\D/g; //定义正则，非数字规则
+    this.value = this.value.replace(x,""); //为非数字时替换成空
+}
+//分配杀手和平民的数量
+function distribution(){
+   getInput();
+   if(players > 18 || players <4){
+       killer = " ";
+       civilian = " ";
+       return;
+   }
+   if(players >= 4 && players <6){
+       killer = 1;
+       civilian = players - killer;
+   }
+   else if(players >=6 && players <9){
+       killer = 2;
+       civilian = players - killer;
+   }
+   else if(players >= 9 && players <12){
+       killer = 3;
+       civilian = players - killer;
+   }
+   else if(players >= 12 && players < 16){
+       killer = 4;
+       civilian = players - killer;
+   }
+   else{
+       killer = 5;
+       civilian = players - killer;
+   }
+}
+//声明玩家数组为空
+var playersArray = [];
+//生成一个有序数组
+function makeArray(){
+   for(x = 0 ; x < civilian; x++){
+       for(y = 0 ; y < killer; y++){
+           playersArray[y] = 1;
+       }
+       playersArray[killer + x] = 0;
+   }
+}
+//数组乱序
+function randomArray(){
+   for(var i = playersArray.length; i > 0; i--){
+       var number = Math.floor(Math.random()*i);
+       var temp = playersArray[i-1];
+       playersArray[i - 1] = playersArray[number];
+       playersArray[number] = temp;
+   }
+}
+//调用生成
+function start(){
+    //每次调用初始化变量值
+   players = undefined; //玩家数量设置未定义
+   playersArray = [];  //玩家数组设置为空
+   distribution();
+   document.getElementById("killer").innerHTML = killer;
+   document.getElementById("civilian").innerHTML = civilian;
+   if(players == undefined){
+       return;
+   }
+   makeArray();
+   randomArray();
+   var temp = JSON.stringify(playersArray);
+   console.log(temp);
+   sessionStorage.setItem("playersArray",temp);
+   //存储玩家数
+   sessionStorage.setItem("players",players);
+   //存储杀手数
+   sessionStorage.setItem("killer",killer);
+   //存储平民数
+   sessionStorage.setItem("civilian",civilian);
+}
+//监听
+document.addEventListener("input",function(){
+   start();
+})
 
-
-// 键盘事件，onkeydown事件当用户按下按键触发
-document.onkeydown = function (event) { //a是按键信息对象以函数参数的形式传递进来
-
-    //取出按键信息中的按键代码(大部分浏览器通过keyCode属性获取按键代码，但少部分浏览器使用的却是charCode
-    var code = event.charCode || event.keyCode;  
-
-    //13为回车键的编码
-    if (code === 13) {   
-        button(); //调用button函数
-    }
+//按钮判断效果
+function change(){
+   start();
+   if(players >= 4 && players <= 18){
+       location.href = "see.html";
+   }else{
+       confirm("请输入正确的数字");
+   }
 }
