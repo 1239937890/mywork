@@ -1,5 +1,5 @@
 var playersArray = JSON.parse(sessionStorage.getItem("playersArray")); //提取玩家数组
-        console.log(playersArray);
+        //console.log(playersArray);
         var killer = sessionStorage.getItem("killer"); //提取杀手数
         var civilian = sessionStorage.getItem("civilian"); //提取平民数
         //console.log(civilian);
@@ -12,7 +12,7 @@ var playersArray = JSON.parse(sessionStorage.getItem("playersArray")); //提取�
         }else{
             var voteDead = [];
         }
-        console.log(voteDead)
+        //console.log(voteDead)
         var choosePlayer;
         var sourceNode = document.getElementById("role1"); //获取源节点
         var box = document.getElementsByClassName("player");
@@ -37,7 +37,7 @@ var playersArray = JSON.parse(sessionStorage.getItem("playersArray")); //提取�
                         //console.log(box[i])
                     }
                     choosePlayer = box[i].index;
-                    console.log(choosePlayer); // 玩家下标
+                    //console.log(choosePlayer); // 玩家下标
                     box[i].getElementsByTagName("i")[0].style.display = "inline-block";
 
                 }
@@ -85,7 +85,7 @@ var playersArray = JSON.parse(sessionStorage.getItem("playersArray")); //提取�
                     //存储剩余的玩家
                     civilian = civilian - 1;
                     sessionStorage.setItem("civilian", civilian);
-                    console.log(civilian);
+                    //console.log(civilian);
                     if (killer >= civilian || killer == 0) {
                         location.href = ("result.html");
                     } else {

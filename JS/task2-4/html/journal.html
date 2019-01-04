@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>法官日记</title>
     <link rel="stylesheet" type="text/css" href="../scss/journal.css">
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body>
@@ -28,7 +29,29 @@
     <footer>
         <button>开始游戏</button>
     </footer>
-    <script src="../js/journal.js"></script>
+    <script>
+        var playersArray = JSON.parse(sessionStorage.getItem("playersArray"));
+        console.log(playersArray);
+        //克隆
+        $(function () {
+            for (let i = 0; i < playersArray.length - 1; i++) {
+                $(".player").eq(0).clone(true).appendTo("main");
+            }
+        })
+        //修改杀手玩家名字
+        $(function () {
+            for (let i = 0; i < playersArray.length; i++) {
+                if (playersArray[i] == "杀手") {
+                    $(".name").eq(i).text("杀手");
+                }
+                $(".number").eq(i).text(i + 1 + "号");
+            }
+        })
+        $("button").eq(0).click(function(){
+            location.href = ('version.html');
+        })
+    </script>
+    <!-- <script src="../js/journal.js"></script> -->
 </body>
 
 </html>

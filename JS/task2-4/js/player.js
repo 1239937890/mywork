@@ -6,10 +6,8 @@ var civilian;
 //获取input的value值
 function getInput(){
     players= document.getElementById("players").value;
-    if (players >= 4 && players <= 18) {
-    
 }
-}
+
 //用oninpu事件设定input的属性
 document.getElementById("players").oninput = function(){
     var x = /\D/g; //定义正则，非数字规则
@@ -70,6 +68,7 @@ function start(){
    players = undefined; //玩家数量设置未定义
    playersArray = [];  //玩家数组设置为空
    distribution();
+   console.log(players)
    document.getElementById("killer").innerHTML = killer;
    document.getElementById("civilian").innerHTML = civilian;
    if(players == undefined){
@@ -83,6 +82,7 @@ function start(){
    //存储玩家数
    sessionStorage.setItem("players",players);
    //存储杀手数
+   
    sessionStorage.setItem("killer",killer);
    //存储平民数
    sessionStorage.setItem("civilian",civilian);
