@@ -1,0 +1,14 @@
+//混合
+@mixin flex($x:center,$y:center) {
+  display: flex;
+  justify-content: $x;
+  align-items: $y;
+}
+@mixin w-h($w:0,$h:0) {
+  width: $w;
+  height: $h;
+}
+@mixin text($t:center,$l:0) {
+  text-align: $t;
+  line-height: $l;
+}

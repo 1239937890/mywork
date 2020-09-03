@@ -1,0 +1,151 @@
+html {
+  font-size: 100px;
+}
+
+@media (max-width: 1600px) {
+  html {
+    font-size: 95px;
+  }
+}
+
+@media (max-width: 1440px) {
+  html {
+    font-size: 90px;
+  }
+}
+
+@media (max-width: 1220px) {
+  html {
+    font-size: 85px;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 80px;
+  }
+}
+
+@media (max-width: 991px) {
+  html {
+    font-size: 70px;
+  }
+}
+
+@media (max-width: 639px) {
+  html {
+    font-size: 60px;
+  }
+}
+
+body {
+  font-family: "PingFang SC", "Microsoft Yahei", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+ul,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #666;
+  outline: 0;
+  border: 0;
+  text-decoration: none
+}
+
+a:hover,
+a:active {
+  background-color: transparent;
+}
+
+em,
+b,
+strong {
+  font-style: normal;
+  font-weight: none;
+}
+
+small {
+  display: block;
+  font-size: 100%;
+}
+
+input,
+textarea,
+button,
+select {
+  outline: 0;
+  border: 0;
+}
+
+select:link,
+select:visited {
+  color: #666;
+}
+
+textarea {
+  resize: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+}
+
+input:required:invalid,
+input:focus:invalid,
+textarea:required:invalid,
+textarea:focus:invalid {
+  box-shadow: none;
+  -moz-box-shadow: none;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #333;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #333;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #333;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #333;
+}
+
+div:focus {
+  outline: none;
+}
+
+img:focus {
+  outline: none;
+}
